@@ -1,0 +1,29 @@
+{
+  "name": "top-hashmap",
+  "version": "1.0.0",
+  "description": "Implementation of a HashMap in JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhkim1292/top-hashmap.git"
+  },
+  "keywords": [
+    "top",
+    "theodinproject",
+    "the",
+    "odin",
+    "project",
+    "hash",
+    "map",
+    "hashmap"
+  ],
+  "author": "Randy H Kim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rhkim1292/top-hashmap/issues"
+  },
+  "homepage": "https://github.com/rhkim1292/top-hashmap#readme"
+}
