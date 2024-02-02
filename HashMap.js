@@ -1,5 +1,5 @@
 const HashMap = () => {
-	const loadFactor = 0.74;
+	const loadFactor = 0.75;
 	let capacity = 1;
 	const buckets = [];
 
@@ -22,15 +22,22 @@ const HashMap = () => {
 
 		buckets[index] = [key, value];
 
-		if (buckets.length / capacity > loadFactor) {
+		if (buckets.length / capacity >= loadFactor) {
 			capacity = capacity * 2
 			console.log(capacity);
 		}
 	};
 
+	const has = (key) => {
+		const index = hash(key) % capacity;
+		console.log(buckets[index]);
+		return buckets[index][0] === key;
+	}
+
 	return {
 		hash,
 		set,
+		has,
 		capacity,
 		buckets,
 	};
@@ -47,3 +54,4 @@ hashmap.set('umma', 10);
 console.log(hashmap.buckets);
 hashmap.set('allahu', 20);
 console.log(hashmap.buckets);
+console.log(hashmap.has('umma'));
