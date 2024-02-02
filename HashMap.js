@@ -1,6 +1,6 @@
 const HashMap = () => {
-	const loadFactor = 0.75;
-	let capacity = 16;
+	const loadFactor = 0.74;
+	let capacity = 1;
 	const buckets = [];
 
 	const hash = (str) => {
@@ -22,15 +22,28 @@ const HashMap = () => {
 
 		buckets[index] = [key, value];
 
-		if (buckets.length / capacity > loadFactor) capacity = capacity * 2;
+		if (buckets.length / capacity > loadFactor) {
+			capacity = capacity * 2
+			console.log(capacity);
+		}
 	};
 
 	return {
 		hash,
 		set,
+		capacity,
+		buckets,
 	};
 };
 
 const hashmap = HashMap();
-console.log(hashmap.hash("Sara"));
-console.log(hashmap.hash("raSa"));
+hashmap.set('Sara', 10);
+console.log(hashmap.buckets);
+hashmap.set('raSa', 10);
+console.log(hashmap.buckets);
+hashmap.set('glen', 10);
+console.log(hashmap.buckets);
+hashmap.set('umma', 10);
+console.log(hashmap.buckets);
+hashmap.set('allahu', 20);
+console.log(hashmap.buckets);
