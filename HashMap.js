@@ -1,7 +1,7 @@
 const HashMap = () => {
 	const loadFactor = 0.75;
 	let capacity = 1;
-	const buckets = [];
+	let buckets = [];
 
 	const hash = (str) => {
 		if (typeof str !== "string")
@@ -20,17 +20,31 @@ const HashMap = () => {
 	const set = (key, value) => {
 		const index = hash(key) % capacity;
 
-		buckets[index] = [key, value];
-
-		if (buckets.length / capacity >= loadFactor) {
-			capacity = capacity * 2
-			console.log(capacity);
+		if (!buckets[index]) {
+			buckets[index] = [];
 		}
+
+		buckets[index].push([key, value]);
+
+		if (buckets.filter(Boolean).length / capacity >= loadFactor) {
+			capacity = capacity * 2;
+			const newBuckets = [];
+			for (let i = 0; i < buckets.length; i++) {
+				if (!buckets[i] || buckets[i].length === 0) continue;
+				for (let j = 0; j < buckets[i].length; j++) {
+					const newIndex = hash(buckets[i][j][0]) % capacity;
+					if (!newBuckets[newIndex]) newBuckets[newIndex] = [];
+					newBuckets[newIndex].push(buckets[i][j]);
+				}
+			}
+			buckets = newBuckets;
+		}
+
+		console.log(buckets);
 	};
 
 	const has = (key) => {
 		const index = hash(key) % capacity;
-		console.log(buckets[index]);
 		return buckets[index][0] === key;
 	}
 
@@ -45,13 +59,8 @@ const HashMap = () => {
 
 const hashmap = HashMap();
 hashmap.set('Sara', 10);
-console.log(hashmap.buckets);
 hashmap.set('raSa', 10);
-console.log(hashmap.buckets);
-hashmap.set('glen', 10);
-console.log(hashmap.buckets);
 hashmap.set('umma', 10);
-console.log(hashmap.buckets);
-hashmap.set('allahu', 20);
-console.log(hashmap.buckets);
-console.log(hashmap.has('umma'));
+hashmap.set('allahu', 10);
+hashmap.set('glen', 20);
+console.log(hashmap.has('umma')); 
