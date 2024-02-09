@@ -84,26 +84,40 @@ const HashMap = () => {
 		return false;
 	};
 
+	const length = (key) => {
+		let totalNumOfKeys = 0;
+
+		for (let i = 0; i < buckets.length; i++) {
+			if (!buckets[i]) continue;
+			totalNumOfKeys += buckets[i].length;
+		}
+
+		return totalNumOfKeys;
+	};
+
 	return {
 		hash,
 		set,
 		get,
 		has,
 		remove,
+		length,
 	};
 };
 
 const hashmap = HashMap();
-hashmap.set('Sara', 10);
-hashmap.set('raSa', 10);
-hashmap.set('umma', 10);
-hashmap.set('randy', 10);
-hashmap.set('glen', 20);
-hashmap.set('bebe', 12);
-hashmap.set('bambi', 10);
-hashmap.set('jin', 1);
-hashmap.set('kazuya', 3);
-hashmap.set('ps5', 85);
-console.log(hashmap.has('raSa'));
-console.log(hashmap.remove('raSa'));
-console.log(hashmap.has('raSa'));
+hashmap.set("Sara", 10);
+hashmap.set("raSa", 10);
+hashmap.set("umma", 10);
+hashmap.set("randy", 10);
+hashmap.set("glen", 20);
+hashmap.set("bebe", 12);
+hashmap.set("bambi", 10);
+hashmap.set("jin", 1);
+hashmap.set("kazuya", 3);
+hashmap.set("ps5", 85);
+console.log(hashmap.length());
+console.log(hashmap.has("raSa"));
+console.log(hashmap.remove("raSa"));
+console.log(hashmap.has("raSa"));
+console.log(hashmap.length());
