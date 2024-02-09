@@ -39,13 +39,13 @@ const HashMap = () => {
 			}
 			buckets = newBuckets;
 		}
-
-		console.log(buckets);
-		console.log(capacity);
 	};
 
 	const get = (key) => {
 		const index = hash(key) % capacity;
+
+		if (!buckets[index]) return null;
+
 		for (let i = 0; i < buckets[index].length; i++) {
 			const currKey = buckets[index][i][0];
 			if (currKey === key) return buckets[index][i][1];
@@ -56,7 +56,14 @@ const HashMap = () => {
 
 	const has = (key) => {
 		const index = hash(key) % capacity;
-		return buckets[index][0] === key;
+
+		if (!buckets[index]) return false;
+
+		for (let i = 0; i < buckets[index].length; i++) {
+			const currKey = buckets[index][i][0];
+			if (currKey === key) return true;
+		}
+		return false;
 	}
 
 	return {
@@ -78,5 +85,11 @@ hashmap.set('bambi', 10);
 hashmap.set('jin', 1);
 hashmap.set('kazuya', 3);
 hashmap.set('ps5', 85);
-console.log(hashmap.get('bebe'));
-console.log(hashmap.has('umma')); 
+const hashmap2 = HashMap();
+console.log(hashmap.get('bryan'));
+hashmap2.set('reina', 2);
+console.log(hashmap2.get('randy'));
+hashmap2.set('randy', 10);
+console.log(hashmap.has('umma'));
+console.log(hashmap2.has('umma'));
+console.log(hashmap2.has('randy'));
