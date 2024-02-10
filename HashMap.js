@@ -95,6 +95,10 @@ const HashMap = () => {
 		return totalNumOfKeys;
 	};
 
+	const clear = () => {
+		buckets = [];
+	}
+
 	return {
 		hash,
 		set,
@@ -102,6 +106,7 @@ const HashMap = () => {
 		has,
 		remove,
 		length,
+		clear,
 	};
 };
 
@@ -121,3 +126,6 @@ console.log(hashmap.has("raSa"));
 console.log(hashmap.remove("raSa"));
 console.log(hashmap.has("raSa"));
 console.log(hashmap.length());
+hashmap.clear()
+console.log(hashmap.length());
+console.log(hashmap.has('jin'));
