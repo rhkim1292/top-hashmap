@@ -97,6 +97,19 @@ const HashMap = () => {
 
 	const clear = () => {
 		buckets = [];
+	};
+
+	const keys = () => {
+		const listOfKeys = [];
+
+		for (let i = 0; i < buckets.length; i++) {
+			if (!buckets[i]) continue;
+			for (let j = 0; j < buckets[i].length; j++) {
+				listOfKeys.push(buckets[i][j][0]);
+			}
+		}
+
+		return listOfKeys;
 	}
 
 	return {
@@ -107,6 +120,7 @@ const HashMap = () => {
 		remove,
 		length,
 		clear,
+		keys,
 	};
 };
 
@@ -126,6 +140,7 @@ console.log(hashmap.has("raSa"));
 console.log(hashmap.remove("raSa"));
 console.log(hashmap.has("raSa"));
 console.log(hashmap.length());
-hashmap.clear()
-console.log(hashmap.length());
-console.log(hashmap.has('jin'));
+hashmap.set("raSa", 30);
+console.log(hashmap.keys());
+const hashmap2 = HashMap();
+console.log(hashmap2.keys());
