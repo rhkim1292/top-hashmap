@@ -152,13 +152,3 @@ const HashMap = () => {
 };
 
 const hashmap = HashMap();
-hashmap.set("Sara", 10);
-hashmap.set("raSa", 10);
-hashmap.set("umma", 10);
-hashmap.set("randy", 10);
-hashmap.set("glen", 20);
-hashmap.set("bebe", 12);
-hashmap.set("bambi", 10);
-hashmap.set("jin", 1);
-hashmap.set("kazuya", 3);
-hashmap.set("ps5", 85);
